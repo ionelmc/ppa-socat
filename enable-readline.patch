@@ -12,3 +12,15 @@ index 5c58737..bc03c62
 +	dh_auto_configure -- --disable-openssl
 
  override_dh_auto_test:
+diff --git a/nestlex.c b/nestlex.c
+index f4a8962..a50a251 100644
+--- a/nestlex.c
++++ b/nestlex.c
+@@ -8,6 +8,7 @@
+ #include "mytypes.h"
+
+ #include "sysincludes.h"
++#include "stddef.h"
+
+ static int _nestlex(const char **addr,
+                    char **token,

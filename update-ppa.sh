@@ -19,9 +19,11 @@ for dist in trusty xenial; do
     pull-lp-source socat $dist
     (
         cd socat*
-        dch --force-distribution -D $dist -l"+ionelmc+ppa" "Enable readline. Disable openssl."
+        dch --force-distribution -D $dist -l"ionelmcppa" "Enable readline. Disable openssl."
         patch -lp1 < ../enable-readline.patch
-        debuild -S -sa
+        sed -i 's/libssl-dev/libreadline-dev/' debian/control
+        sed -i 's/^Depends: /Depends: libreadline,/' debian/control
+        debuild -S -sd
     )
     dput -f ppa:ionel-mc/socat *.changes
 done
