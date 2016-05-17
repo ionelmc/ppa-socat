@@ -19,10 +19,10 @@ for dist in trusty xenial; do
     pull-lp-source socat $dist
     (
         cd socat*
-        dch --force-distribution -D $dist -l"ionelmc~ppa" "Enable readline. Disable openssl."
+        dch --force-distribution -D $dist -l"ionelmc1~ppa" "Enable readline. Disable openssl."
         patch -lp1 < ../enable-readline.patch
-        sed -i 's/libssl-dev/libreadline-dev/' debian/control
-        sed -i 's/^Depends: /Depends: libreadline,/' debian/control
+        sed -i 's/libssl-dev/libreadline6-dev/' debian/control
+        sed -i 's/^Depends: /Depends: libreadline6,/' debian/control
         echo fix-include >> debian/patches/series
         debuild -S -sd
     )
