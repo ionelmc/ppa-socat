@@ -1,0 +1,14 @@
+diff --git a/debian/rules b/debian/rules
+old mode 100755
+new mode 100644
+index 5c58737..bc03c62
+--- a/debian/rules
++++ b/debian/rules
+@@ -4,6 +4,6 @@
+ 	dh $@
+
+ override_dh_auto_configure:
+-	dh_auto_configure -- --disable-readline
++	dh_auto_configure -- --disable-openssl
+
+ override_dh_auto_test:
