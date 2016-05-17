@@ -23,6 +23,7 @@ for dist in trusty xenial; do
         patch -lp1 < ../enable-readline.patch
         sed -i 's/libssl-dev/libreadline-dev/' debian/control
         sed -i 's/^Depends: /Depends: libreadline,/' debian/control
+        echo fix-include >> debian/patches/series
         debuild -S -sd
     )
     dput -f ppa:ionel-mc/socat *.changes

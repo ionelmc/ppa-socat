@@ -12,15 +12,21 @@ index 5c58737..bc03c62
 +	dh_auto_configure -- --disable-openssl
 
  override_dh_auto_test:
-diff --git a/nestlex.c b/nestlex.c
-index f4a8962..a50a251 100644
---- a/nestlex.c
-+++ b/nestlex.c
-@@ -8,6 +8,7 @@
- #include "mytypes.h"
-
- #include "sysincludes.h"
-+#include "stddef.h"
-
- static int _nestlex(const char **addr,
-                    char **token,
+diff --git a/debian/patches/fix-include b/debian/patches/fix-include
+new file mode 100644
+index 0000000..96c7412
+--- /dev/null
++++ b/debian/patches/fix-include
+@@ -0,0 +1,12 @@
++Fix missing include.
++
++--- a/nestlex.c	2016-05-17 17:10:01.200441730 +0300
+++++ b/nestlex.c	2016-05-17 17:10:47.512404942 +0300
++@@ -5,6 +5,7 @@
++ /* a function for lexical scanning of nested character patterns */
++
++ #include "config.h"
+++#include <stddef.h>
++ #include "mytypes.h"
++
++ #include "sysincludes.h"
